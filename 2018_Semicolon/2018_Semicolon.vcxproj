@@ -168,6 +168,8 @@
   <ItemGroup>
     <Image Include="2018_Semicolon.ico" />
     <Image Include="bitmap1.bmp" />
+    <Image Include="bitmap2.bmp" />
+    <Image Include="Resources\Player.png" />
     <Image Include="small.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
