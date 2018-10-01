@@ -27,13 +27,12 @@ void DrawScreen(void)
 	HDC hMemDC = CreateCompatibleDC(drawDC);
 	HBITMAP PlayerBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP1));
 	HBITMAP BulletBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP2));
-	
 
 	for (int i = 0; i < MAXBULLET; i++)	//불릿을 먼저 그린다
 	{
 		if (PBullet[i].isUsed)
 		{
-			SelectObject(hMemDC, HBITMAP(BulletBitmap));
+			SelectObject(hMemDC, HBITMAP(BulletBitmap));	//비트맵 연결
 			BitBlt(drawDC, PBullet[i].x, PBullet[i].y, PBullet[i].x + 40, PBullet[i].y + 40, hMemDC, 0, 0, SRCCOPY);
 		}
 	}
@@ -41,9 +40,12 @@ void DrawScreen(void)
 	SelectObject(hMemDC, HBITMAP(PlayerBitmap));
 	BitBlt(drawDC, Player.x, Player.y, Player.x + 40, Player.y + 40, hMemDC, 0, 0, SRCCOPY);
 
+	DeleteDC(hMemDC);	//CreateCompatibleDC() --> DeleteDC()
+	ReleaseDC(g_hWnd, drawDC);
 
-	DeleteDC(hMemDC);
-	DeleteDC(drawDC);
+	DeleteObject(PlayerBitmap);
+	DeleteObject(BulletBitmap);
+
 }
 
 void MoveRight(void)
