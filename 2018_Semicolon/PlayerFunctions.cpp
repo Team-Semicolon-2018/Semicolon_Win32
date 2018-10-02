@@ -50,22 +50,22 @@ void DrawScreen(void)
 
 void MoveRight(void)
 {
-	Player.x += PlayerSpeed;
+	if(Player.x < WIN_X_SIZE - 100) Player.x += PlayerSpeed;
 }
 
 void MoveLeft(void)
 {
-	Player.x -= PlayerSpeed;
+	if(Player.x > 50) Player.x -= PlayerSpeed;
 }
 
 void MoveUp(void)
 {
-	Player.y -= PlayerSpeed;
+	//Player.y -= PlayerSpeed;
 }
 
 void MoveDown(void)
 {
-	Player.y += PlayerSpeed;
+	//Player.y += PlayerSpeed;
 }
 
 void PlayerFired(void)
