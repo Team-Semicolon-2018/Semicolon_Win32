@@ -19,6 +19,8 @@ void Control(void)
 
 	if ((GetAsyncKeyState(32) & 0x8000) && canFire)
 		PlayerFired();
+	if (int(Player.x + speed) < WIN_X_SIZE - 100 && int(Player.x + speed) > 50) Player.x += speed;
+
 }
 
 void DrawScreen(void)
@@ -38,7 +40,7 @@ void DrawScreen(void)
 	}
 
 	SelectObject(hMemDC, HBITMAP(PlayerBitmap));
-	BitBlt(drawDC, Player.x, Player.y, Player.x + 40, Player.y + 40, hMemDC, 0, 0, SRCCOPY);
+	BitBlt(drawDC, int(Player.x), Player.y, int(Player.x) + 40, Player.y + 40, hMemDC, 0, 0, SRCCOPY);
 
 	DeleteDC(hMemDC);	//CreateCompatibleDC() --> DeleteDC()
 	ReleaseDC(g_hWnd, drawDC);
@@ -50,12 +52,12 @@ void DrawScreen(void)
 
 void MoveRight(void)
 {
-	if(Player.x < WIN_X_SIZE - 100) Player.x += PlayerSpeed;
+	speed += PlayerSpeed;
 }
 
 void MoveLeft(void)
 {
-	if(Player.x > 50) Player.x -= PlayerSpeed;
+	speed -= PlayerSpeed;
 }
 
 void MoveUp(void)
@@ -76,7 +78,7 @@ void PlayerFired(void)
 		if (PBullet[i].isUsed == 0)
 		{
 			PBullet[i].isUsed = 1;
-			PBullet[i].x = Player.x;
+			PBullet[i].x = int(Player.x);
 			PBullet[i].y = Player.y;
 			break;
 		}
