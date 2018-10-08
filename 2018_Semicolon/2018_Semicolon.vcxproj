@@ -148,13 +148,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="2018_Semicolon.h" />
+    <ClInclude Include="inc\fmod.h" />
+    <ClInclude Include="inc\fmod.hpp" />
+    <ClInclude Include="inc\fmod_codec.h" />
+    <ClInclude Include="inc\fmod_dsp.h" />
+    <ClInclude Include="inc\fmod_errors.h" />
+    <ClInclude Include="inc\fmod_memoryinfo.h" />
+    <ClInclude Include="inc\fmod_output.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="sndenum.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="2018_Semicolon.cpp" />
     <ClCompile Include="PlayerFunctions.cpp" />
+    <ClCompile Include="snd.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -171,6 +180,19 @@
     <Image Include="bitmap2.bmp" />
     <Image Include="Resources\Player.png" />
     <Image Include="small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\res\bgm.wav" />
+    <Media Include="..\res\bullet.wav" />
+    <Media Include="..\res\enemy3die.wav" />
+    <Media Include="..\res\enemyhit1.wav" />
+    <Media Include="..\res\enemyhit2.wav" />
+    <Media Include="..\res\enemyhit3.wav" />
+    <Media Include="..\res\explosion.wav" />
+    <Media Include="..\res\NewPlayerInit.wav" />
+    <Media Include="..\res\starfox_vs_menu_move.wav" />
+    <Media Include="..\res\start.wav" />
+    <Media Include="..\res\_galaga_end_theme.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

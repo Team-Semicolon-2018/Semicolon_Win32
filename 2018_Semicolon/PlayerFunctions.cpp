@@ -10,6 +10,7 @@ void Control(void)
 
 	if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
 		MoveRight();
+		
 
 	if (GetAsyncKeyState(VK_DOWN) & 0x8000)
 		MoveDown();
@@ -19,8 +20,13 @@ void Control(void)
 
 	if ((GetAsyncKeyState(32) & 0x8000) && canFire)
 		PlayerFired();
-	if (int(Player.x + speed) < WIN_X_SIZE - 100 && int(Player.x + speed) > 50) Player.x += speed;
-
+	if (int(Player.x + speed) < WIN_X_SIZE - 100 && int(Player.x + speed) > 50) {
+		Player.x += speed;
+		
+	}
+	else {
+		speed = 0;
+	}
 }
 
 void DrawScreen(void)
@@ -53,11 +59,13 @@ void DrawScreen(void)
 void MoveRight(void)
 {
 	speed += PlayerSpeed;
+	lastmovedtime = time(NULL);
 }
 
 void MoveLeft(void)
 {
 	speed -= PlayerSpeed;
+	lastmovedtime = time(NULL);
 }
 
 void MoveUp(void)

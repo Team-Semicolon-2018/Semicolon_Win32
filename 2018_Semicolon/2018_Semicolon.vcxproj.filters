@@ -27,6 +27,30 @@
     <ClInclude Include="2018_Semicolon.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="inc\fmod.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\fmod.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\fmod_codec.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\fmod_dsp.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\fmod_errors.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\fmod_memoryinfo.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\fmod_output.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="sndenum.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -36,6 +60,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="PlayerFunctions.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="snd.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -60,5 +87,40 @@
     <Image Include="Resources\Player.png">
       <Filter>리소스 파일</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\res\_galaga_end_theme.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="..\res\bgm.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="..\res\bullet.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="..\res\enemy3die.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="..\res\enemyhit1.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="..\res\enemyhit2.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="..\res\enemyhit3.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="..\res\explosion.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="..\res\NewPlayerInit.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="..\res\starfox_vs_menu_move.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="..\res\start.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
   </ItemGroup>
 </Project>
