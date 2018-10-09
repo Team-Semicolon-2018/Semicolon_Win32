@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="2018_Semicolon.cpp" />
+    <ClCompile Include="enemycontrol.cpp" />
     <ClCompile Include="PlayerFunctions.cpp" />
     <ClCompile Include="snd.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -175,10 +176,10 @@
     <ResourceCompile Include="2018_Semicolon.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\res\bullet.bmp" />
+    <Image Include="..\res\enemy.bmp" />
+    <Image Include="..\res\player.bmp" />
     <Image Include="2018_Semicolon.ico" />
-    <Image Include="bitmap1.bmp" />
-    <Image Include="bitmap2.bmp" />
-    <Image Include="Resources\Player.png" />
     <Image Include="small.ico" />
   </ItemGroup>
   <ItemGroup>

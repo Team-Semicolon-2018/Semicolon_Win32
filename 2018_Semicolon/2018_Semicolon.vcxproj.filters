@@ -65,6 +65,9 @@
     <ClCompile Include="snd.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="enemycontrol.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2018_Semicolon.rc">
@@ -78,13 +81,13 @@
     <Image Include="2018_Semicolon.ico">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="bitmap1.bmp">
+    <Image Include="..\res\bullet.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="bitmap2.bmp">
+    <Image Include="..\res\player.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="Resources\Player.png">
+    <Image Include="..\res\enemy.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

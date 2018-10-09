@@ -1,9 +1,11 @@
 #include "stdafx.h"
 #include "2018_Semicolon.h"
 
+
+
 void Control(void)
 {
-	DrawScreen();
+	chkEnemyHit();
 	CtrlPBullet();
 	if (GetAsyncKeyState(VK_LEFT) & 0x8000)
 		MoveLeft();
@@ -27,24 +29,44 @@ void Control(void)
 	else {
 		speed = 0;
 	}
+	if(chkLevelClear()) {
+		MessageBox(g_hWnd, LPCWSTR(L"레벨 클리어"), LPCWSTR(L"ㅇㅇ"), MB_ICONINFORMATION | MB_OK);
+		exit(0);
+	}
 }
 
 void DrawScreen(void)
 {
 	HDC drawDC = GetDC(g_hWnd);
 	HDC hMemDC = CreateCompatibleDC(drawDC);
-	HBITMAP PlayerBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP1));
-	HBITMAP BulletBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP2));
+	HBITMAP PlayerBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP2));
+	HBITMAP BulletBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP1));
+	HBITMAP EnemyBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP3));
 
+	
+
+	for (int i = 0; i < MAX_ENEMY; i++)	//Enemy를 그린다
+	{
+		if (Enemy[i].Live != 0)
+		{
+			SelectObject(hMemDC, HBITMAP(EnemyBitmap));	//비트맵 연결
+			BitBlt(drawDC, int(Enemy[i].x), Enemy[i].y, int(Enemy[i].x) + 40, Enemy[i].y + 40, hMemDC, 0, 0, SRCCOPY);
+		}
+		else {
+			continue;
+		}
+	}
 	for (int i = 0; i < MAXBULLET; i++)	//불릿을 먼저 그린다
 	{
 		if (PBullet[i].isUsed)
 		{
 			SelectObject(hMemDC, HBITMAP(BulletBitmap));	//비트맵 연결
 			BitBlt(drawDC, PBullet[i].x, PBullet[i].y, PBullet[i].x + 40, PBullet[i].y + 40, hMemDC, 0, 0, SRCCOPY);
+		}else {
+			continue;
 		}
 	}
-
+	
 	SelectObject(hMemDC, HBITMAP(PlayerBitmap));
 	BitBlt(drawDC, int(Player.x), Player.y, int(Player.x) + 40, Player.y + 40, hMemDC, 0, 0, SRCCOPY);
 
@@ -53,6 +75,7 @@ void DrawScreen(void)
 
 	DeleteObject(PlayerBitmap);
 	DeleteObject(BulletBitmap);
+	DeleteObject(EnemyBitmap);
 
 }
 
