@@ -28,6 +28,8 @@ void Control(void)
 	else {
 		speed = 0;
 	}
+	chkEnemyFuckedThePlayer();
+
 	if(chkLevelClear()) {
 		MessageBox(g_hWnd, LPCWSTR(L"레벨 클리어"), LPCWSTR(L"ㅇㅇ"), MB_ICONINFORMATION | MB_OK);
 	}
