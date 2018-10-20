@@ -6,6 +6,7 @@ void Control(void)
 {
 	chkEnemyHit();
 	CtrlPBullet();
+	CtrlEBullet();
 	if (GetAsyncKeyState(VK_LEFT) & 0x8000)
 		MoveLeft();
 
@@ -42,8 +43,18 @@ void DrawScreen(void)
 	HBITMAP PlayerBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP2));
 	HBITMAP BulletBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP1));
 	HBITMAP EnemyBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP3));
+	HBITMAP EBulletBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP1));
 
-	
+	for (int i = 0; i < MAXEBULLET; i++)
+	{
+		if (EBullet[i].isUsed == 0)
+			continue;
+		else
+		{
+			SelectObject(hMemDC, HBITMAP(EBulletBitmap));
+			BitBlt(drawDC, EBullet[i].x, EBullet[i].y, EBullet[i].x + 40, EBullet[i].y + 40, hMemDC, 0, 0, SRCCOPY);
+		}
+	}
 
 	for (int i = 0; i < MAX_ENEMY; i++)	//Enemy를 그린다
 	{

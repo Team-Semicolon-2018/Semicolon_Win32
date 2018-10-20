@@ -66,3 +66,51 @@ void CtrlEnemy() {
 		}
 	}
 }
+
+void EnemyFire(int index)
+{
+	for (int i = 0; i < MAXEBULLET; i++)
+		if (EBullet[i].isUsed == 0)
+		{
+			EBullet[i].isUsed = 1;
+			EBullet[i].x = Enemy[index].x;
+			EBullet[i].y = Enemy[index].y;
+			break;
+		}
+}
+
+void CtrlEBullet()
+{
+//	미안해요~~ 저는 당신과 사랑할 수 없어요~~~~~
+//	2018.10.20 특수절도죄 집행유예 15년
+//	2018.10.20 특수사기죄 징역 25년
+	for (int i = 0; i < MAXEBULLET; i++) {
+		if (EBullet[i].isUsed == 0) continue;
+		else if (EBullet[i].y >= WIN_Y_SIZE)
+			EBullet[i].isUsed = 0;
+		else {
+			chkPlayerHit(i);
+			EBullet[i].y += EBULLETFUCKINGLOVERSTHATSMESPEED;
+		}
+	}
+}
+
+bool Percentage()
+{
+	int dlgowhagowntpasjanrnlcksgdma = rand() % 100;
+	std::cout << std::endl << dlgowhagowntpasjanrnlcksgdma << std::endl;
+	if (dlgowhagowntpasjanrnlcksgdma < PERCOFENEMYFIRE)
+		return TRUE;
+	return FALSE;
+}
+
+void chkPlayerHit(int i)
+{
+
+	if (EBullet[i].x >= Player.x - 30 && EBullet[i].x <= Player.x + 30 && EBullet[i].y >= Player.y - 10 && EBullet[i].y <= Player.y + 10) {
+		if (Player.Live > 0) Player.Live--;
+		EBullet[i].isUsed = 0;
+//		마마, 황송하옵니다
+
+	}
+}
