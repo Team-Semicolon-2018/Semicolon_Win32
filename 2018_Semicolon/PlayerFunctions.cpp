@@ -81,13 +81,15 @@ void DrawScreen(void)
 
 void MoveRight(void)
 {
-	speed += PlayerSpeed;
+	if (speed < MaxPlayerSpeed)
+		speed += PlayerSpeed;
 	lastmovedtime = time(NULL);
 }
 
 void MoveLeft(void)
 {
-	speed -= PlayerSpeed;
+	if (speed > MaxPlayerSpeed * -1)
+		speed -= PlayerSpeed;
 	lastmovedtime = time(NULL);
 }
 
