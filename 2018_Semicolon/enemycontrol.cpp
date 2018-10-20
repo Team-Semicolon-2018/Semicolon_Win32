@@ -114,6 +114,7 @@ void chkPlayerHit(int i)
 		if (Player.Live > 0) Player.Live--;
 		EBullet[i].isUsed = 0;
 //		마마, 황송하옵니다
+		//-- == 마마
 
 	}
 }
