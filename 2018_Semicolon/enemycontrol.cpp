@@ -40,3 +40,12 @@ bool chkLevelClear() {
 	}
 	return true;
 }
+
+void CtrlEnemy() {
+	for (int i = 0; i < MAX_ENEMY; i++) {
+		if (Enemy[i].Live == 0) continue;
+		else {
+			Enemy[i].y += ENEMYSPEED;
+		}
+	}
+}

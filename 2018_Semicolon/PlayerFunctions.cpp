@@ -2,7 +2,6 @@
 #include "2018_Semicolon.h"
 
 
-
 void Control(void)
 {
 	chkEnemyHit();
@@ -31,7 +30,6 @@ void Control(void)
 	}
 	if(chkLevelClear()) {
 		MessageBox(g_hWnd, LPCWSTR(L"레벨 클리어"), LPCWSTR(L"ㅇㅇ"), MB_ICONINFORMATION | MB_OK);
-		exit(0);
 	}
 }
 
