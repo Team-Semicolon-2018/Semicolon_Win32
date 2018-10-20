@@ -73,8 +73,8 @@ void EnemyFire(int index)
 		if (EBullet[i].isUsed == 0)
 		{
 			EBullet[i].isUsed = 1;
-			EBullet[i].x = Enemy[index].x;
-			EBullet[i].y = Enemy[index].y;
+			EBullet[i].x = (int)Enemy[index].x;
+			EBullet[i].y = (int)Enemy[index].y;
 			break;
 		}
 }
@@ -93,6 +93,9 @@ void CtrlEBullet()
 			EBullet[i].y += EBULLETFUCKINGLOVERSTHATSMESPEED;
 		}
 	}
+
+	
+	
 }
 
 bool Percentage()
@@ -113,4 +116,20 @@ void chkPlayerHit(int i)
 //		마마, 황송하옵니다
 
 	}
+}
+
+void chkBulletHit() {
+	
+	for (int i = 0; i < MAXEBULLET; i++) {
+		for (int j = 0; j < MAXBULLET; j++) {
+			if (EBullet[i].isUsed && PBullet[j].isUsed) {
+				if (EBullet[i].x >= PBullet[j].x - 30 && EBullet[i].x <= PBullet[j].x + 30 && EBullet[i].y >= PBullet[j].y - 10 && EBullet[i].y <= PBullet[j].y + 10) {
+					std::cout << "bullet hit";
+					EBullet[i].isUsed = FALSE;
+					PBullet[j].isUsed = FALSE;
+				}
+			}
+		}
+	}
+	
 }

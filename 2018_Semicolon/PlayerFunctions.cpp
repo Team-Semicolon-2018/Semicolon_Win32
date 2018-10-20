@@ -7,6 +7,7 @@ void Control(void)
 	chkEnemyHit();
 	CtrlPBullet();
 	CtrlEBullet();
+	chkBulletHit();
 	if (GetAsyncKeyState(VK_LEFT) & 0x8000)
 		MoveLeft();
 
