@@ -33,6 +33,22 @@ void chkEnemyHit() {
 	}
 }
 
+void chkEnemyFuckedThePlayer() {
+	for (int i = 0; i < MAX_ENEMY; i++) {
+		if (Enemy[i].Live != 0) {
+			if (Enemy[i].x >= Player.x - 30 && Enemy[i].x <= Player.x + 30 && Enemy[i].y >= Player.y - 10 && Enemy[i].y <= Player.y + 10) {
+				if (Player.Live > 0) Player.Live--;
+				
+			}
+			
+		}
+		else {
+			continue;
+		}
+
+	}
+}
+
 bool chkLevelClear() {
 	for (int i = 0; i < MAX_ENEMY; i++) {
 		if (Enemy[i].Live != 0) return false;
