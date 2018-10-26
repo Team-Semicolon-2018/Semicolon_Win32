@@ -1,13 +1,14 @@
 #include "stdafx.h"
 #include "2018_Semicolon.h"
 
-int spawnEnemy(int x, int y) {
+int spawnEnemy(int x, int y, int level) {
 	for(int i=0;i<MAX_ENEMY;i++) {
 		if (Enemy[i].Live != 0) continue;
 		else {
 			Enemy[i].Live = 1;
 			Enemy[i].x = x;
 			Enemy[i].y = y;
+			Enemy[i].level = level;
 			std::cout << "Enemy #" << i << " spawned at (" << x << ", " << y << ")" << std::endl;
 			return RET_SUCCESS;
 		}

@@ -178,6 +178,7 @@
   <ItemGroup>
     <Image Include="..\res\bullet.bmp" />
     <Image Include="..\res\enemy.bmp" />
+    <Image Include="..\res\enemy1.bmp" />
     <Image Include="..\res\player.bmp" />
     <Image Include="2018_Semicolon.ico" />
     <Image Include="small.ico" />

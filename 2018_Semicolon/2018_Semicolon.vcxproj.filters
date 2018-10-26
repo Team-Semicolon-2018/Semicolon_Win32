@@ -90,6 +90,9 @@
     <Image Include="..\res\enemy.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="..\res\enemy1.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="..\res\_galaga_end_theme.wav">
