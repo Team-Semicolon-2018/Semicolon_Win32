@@ -2,7 +2,8 @@
 #include "2018_Semicolon.h"
 
 
-void Control(void)
+
+void CALLBACK Control(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime)
 {
 	chkEnemyHit();
 	CtrlPBullet();
@@ -30,14 +31,20 @@ void Control(void)
 	else {
 		speed = 0;
 	}
-	chkEnemyFuckedThePlayer();
 
+	if (!((GetKeyState(VK_RIGHT) & 0x8000) || (GetKeyState(VK_LEFT) & 0x8000))) {
+		if (speed > 0) speed -= SPEEDBREAK;
+		if (speed < 0) speed += SPEEDBREAK;
+	}
+
+	chkEnemyFuckedThePlayer();
+	score++;
 	if(chkLevelClear()) {
 		MessageBox(g_hWnd, LPCWSTR(L"레벨 클리어"), LPCWSTR(L"ㅇㅇ"), MB_ICONINFORMATION | MB_OK);
 	}
 }
 
-void DrawScreen(void)
+void DrawScreen()
 {
 	HDC drawDC = GetDC(g_hWnd);
 	HDC hMemDC = CreateCompatibleDC(drawDC);
@@ -172,14 +179,12 @@ void MoveRight(void)
 {
 	if (speed < MAX_PLAYER_SPEED)
 		speed += PlayerSpeed;
-	lastmovedtime = time(NULL);
 }
 
 void MoveLeft(void)
 {
 	if (speed > MAX_PLAYER_SPEED * -1)
 		speed -= PlayerSpeed;
-	lastmovedtime = time(NULL);
 }
 
 void MoveUp(void)
