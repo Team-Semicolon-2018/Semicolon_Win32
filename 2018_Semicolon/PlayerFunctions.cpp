@@ -24,7 +24,7 @@ void Control(void)
 	if ((GetAsyncKeyState(32) & 0x8000) && canFire)
 		PlayerFired();
 	if (int(Player.x + speed) < WIN_X_SIZE - 100 && int(Player.x + speed) > 50) {
-		Player.x += speed;
+		Player.x += (int)speed;
 		
 	}
 	else {
