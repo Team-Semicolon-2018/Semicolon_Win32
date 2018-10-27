@@ -5,7 +5,11 @@ int spawnEnemy(int x, int y, int level) {
 	for(int i=0;i<MAX_ENEMY;i++) {
 		if (Enemy[i].Live != 0) continue;
 		else {
+			
 			Enemy[i].Live = 1;
+			if (level == 3) {
+				Enemy[i].Live = 2;
+			}
 			Enemy[i].x = x;
 			Enemy[i].y = y;
 			Enemy[i].level = level;
@@ -128,7 +132,6 @@ void chkPlayerHit(int i)
 }
 
 void chkBulletHit() {
-	
 	for (int i = 0; i < MAXEBULLET; i++) {
 		for (int j = 0; j < MAXBULLET; j++) {
 			if (EBullet[i].isUsed && PBullet[j].isUsed) {

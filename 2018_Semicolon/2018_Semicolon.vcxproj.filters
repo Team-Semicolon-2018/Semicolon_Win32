@@ -93,6 +93,27 @@
     <Image Include="..\res\enemy1.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="..\res\enemy1-1.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\res\enemy1-hit.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\res\enemy1-hit-1.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\res\enemy2.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\res\enemy2-1.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\res\enemy3.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\res\enemy3-1.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="..\res\_galaga_end_theme.wav">

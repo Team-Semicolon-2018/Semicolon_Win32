@@ -24,7 +24,7 @@ void Control(void)
 	if ((GetAsyncKeyState(32) & 0x8000) && canFire)
 		PlayerFired();
 	if (int(Player.x + speed) < WIN_X_SIZE - 100 && int(Player.x + speed) > 50) {
-		Player.x += speed;
+		Player.x += (int)speed;
 		
 	}
 	else {
@@ -43,7 +43,21 @@ void DrawScreen(void)
 	HDC hMemDC = CreateCompatibleDC(drawDC);
 	HBITMAP PlayerBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP2));
 	HBITMAP BulletBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP1));
-	HBITMAP EnemyBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP3));
+
+	HBITMAP EnemyBitmap3_0 = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP3));
+	HBITMAP EnemyBitmap3_1 = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP6));
+
+	HBITMAP EnemyBitmap3_0_HIT = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP7));
+	HBITMAP EnemyBitmap3_1_HIT = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP8));
+
+
+	HBITMAP EnemyBitmap2_0 = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP9));
+	HBITMAP EnemyBitmap2_1 = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP10));
+
+	HBITMAP EnemyBitmap1_0 = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP11));
+	HBITMAP EnemyBitmap1_1 = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP12));
+
+
 	HBITMAP EBulletBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP1));
 
 	for (int i = 0; i < MAXEBULLET; i++)
@@ -56,18 +70,73 @@ void DrawScreen(void)
 			BitBlt(drawDC, EBullet[i].x, EBullet[i].y, EBullet[i].x + 40, EBullet[i].y + 40, hMemDC, 0, 0, SRCCOPY);
 		}
 	}
-
-	for (int i = 0; i < MAX_ENEMY; i++)	//Enemy를 그린다
-	{
-		if (Enemy[i].Live != 0)
+	if (enemysprite) {
+		for (int i = 0; i < MAX_ENEMY; i++)	//Enemy를 그린다
 		{
-			SelectObject(hMemDC, HBITMAP(EnemyBitmap));	//비트맵 연결
-			BitBlt(drawDC, int(Enemy[i].x), Enemy[i].y, int(Enemy[i].x) + 40, Enemy[i].y + 40, hMemDC, 0, 0, SRCCOPY);
-		}
-		else {
-			continue;
+			if (Enemy[i].Live != 0)
+			{
+				if (Enemy[i].level == 3) {
+					if(Enemy[i].Live == 2) {
+						SelectObject(hMemDC, HBITMAP(EnemyBitmap3_0));	//비트맵 연결
+						BitBlt(drawDC, int(Enemy[i].x), Enemy[i].y, int(Enemy[i].x) + 40, Enemy[i].y + 40, hMemDC, 0, 0, SRCCOPY);
+
+					}
+					else{
+						SelectObject(hMemDC, HBITMAP(EnemyBitmap3_0_HIT));	//비트맵 연결
+						BitBlt(drawDC, int(Enemy[i].x), Enemy[i].y, int(Enemy[i].x) + 40, Enemy[i].y + 40, hMemDC, 0, 0, SRCCOPY);
+
+					}
+				}
+				else if (Enemy[i].level == 2) {
+					SelectObject(hMemDC, HBITMAP(EnemyBitmap2_0));	//비트맵 연결
+					BitBlt(drawDC, int(Enemy[i].x), Enemy[i].y, int(Enemy[i].x) + 40, Enemy[i].y + 40, hMemDC, 0, 0, SRCCOPY);
+
+				}
+				else if (Enemy[i].level == 1) {
+					SelectObject(hMemDC, HBITMAP(EnemyBitmap1_0));	//비트맵 연결
+					BitBlt(drawDC, int(Enemy[i].x), Enemy[i].y, int(Enemy[i].x) + 40, Enemy[i].y + 40, hMemDC, 0, 0, SRCCOPY);
+				}
+			}
+			else {
+				continue;
+			}
 		}
 	}
+	else {
+		for (int i = 0; i < MAX_ENEMY; i++)	//Enemy를 그린다
+		{
+			if (Enemy[i].Live != 0)
+			{
+				if (Enemy[i].level == 3) {
+					if (Enemy[i].Live == 2) {
+						SelectObject(hMemDC, HBITMAP(EnemyBitmap3_1));	//비트맵 연결
+						BitBlt(drawDC, int(Enemy[i].x), Enemy[i].y, int(Enemy[i].x) + 40, Enemy[i].y + 40, hMemDC, 0, 0, SRCCOPY);
+						
+					}
+					else {
+						SelectObject(hMemDC, HBITMAP(EnemyBitmap3_1_HIT));	//비트맵 연결
+						BitBlt(drawDC, int(Enemy[i].x), Enemy[i].y, int(Enemy[i].x) + 40, Enemy[i].y + 40, hMemDC, 0, 0, SRCCOPY);
+
+					}
+
+				}
+				else if (Enemy[i].level == 2) {
+					SelectObject(hMemDC, HBITMAP(EnemyBitmap2_1));	//비트맵 연결
+					BitBlt(drawDC, int(Enemy[i].x), Enemy[i].y, int(Enemy[i].x) + 40, Enemy[i].y + 40, hMemDC, 0, 0, SRCCOPY);
+
+				}
+				else if (Enemy[i].level == 1) {
+					SelectObject(hMemDC, HBITMAP(EnemyBitmap1_1));	//비트맵 연결
+					BitBlt(drawDC, int(Enemy[i].x), Enemy[i].y, int(Enemy[i].x) + 40, Enemy[i].y + 40, hMemDC, 0, 0, SRCCOPY);
+
+				}
+			}
+			else {
+				continue;
+			}
+		}
+	}
+	
 	for (int i = 0; i < MAXBULLET; i++)	//불릿을 먼저 그린다
 	{
 		if (PBullet[i].isUsed)
@@ -87,7 +156,15 @@ void DrawScreen(void)
 
 	DeleteObject(PlayerBitmap);
 	DeleteObject(BulletBitmap);
-	DeleteObject(EnemyBitmap);
+	DeleteObject(EnemyBitmap1_0);
+	DeleteObject(EnemyBitmap1_1);
+	DeleteObject(EnemyBitmap2_0);
+	DeleteObject(EnemyBitmap2_1);
+	DeleteObject(EnemyBitmap3_0);
+	DeleteObject(EnemyBitmap3_1);
+	DeleteObject(EnemyBitmap3_0_HIT);
+	DeleteObject(EnemyBitmap3_1_HIT);
+
 
 }
 
