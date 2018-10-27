@@ -64,6 +64,12 @@ void CtrlEnemy() {
 		if (Enemy[i].Live == 0) continue;
 		else {
 			Enemy[i].y += ENEMYSPEED;
+			if (Enemy[i].y > WIN_Y_SIZE - 100)
+			{
+				Enemy[i].Live = 0;
+				if (Player.Live > 0)
+					Player.Live--;
+			}
 		}
 	}
 }
@@ -85,6 +91,7 @@ void CtrlEBullet()
 //	미안해요~~ 저는 당신과 사랑할 수 없어요~~~~~
 //	2018.10.20 특수절도죄 집행유예 15년
 //	2018.10.20 특수사기죄 징역 25년
+//	기모띠
 	for (int i = 0; i < MAXEBULLET; i++) {
 		if (EBullet[i].isUsed == 0) continue;
 		else if (EBullet[i].y >= WIN_Y_SIZE)
