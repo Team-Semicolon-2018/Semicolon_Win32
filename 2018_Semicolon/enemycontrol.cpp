@@ -64,6 +64,12 @@ void CtrlEnemy() {
 		if (Enemy[i].Live == 0) continue;
 		else {
 			Enemy[i].y += ENEMYSPEED;
+			if (Enemy[i].y > WIN_Y_SIZE - 100)
+			{
+				Enemy[i].Live = 0;
+				if (Player.Live > 0)
+					Player.Live--;
+			}
 		}
 	}
 }
