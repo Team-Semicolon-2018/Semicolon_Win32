@@ -6,5 +6,5 @@
 
 2018년 서부정보영재 산출물.
 
-MADE BY [컴터박](https://github.com/computerpark/), [우지민](https://github.com/wjm0101), 박민규, 이태우.
+MADE BY [컴터박](https://github.com/computerpark/), [우지민](https://github.com/wjm0101), 박민규, [이태우](https://github.com/tritiummaker).
 
