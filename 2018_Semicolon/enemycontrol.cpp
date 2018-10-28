@@ -1,6 +1,11 @@
 #include "stdafx.h"
 #include "2018_Semicolon.h"
 
+int counter = 0;
+
+bool aorb = true;
+
+
 int spawnEnemy(int x, int y, int level) {
 	for(int i=0;i<MAX_ENEMY;i++) {
 		if (Enemy[i].Live != 0) continue;
@@ -56,10 +61,16 @@ void chkEnemyFuckedThePlayer() {
 }
 
 bool chkLevelClear() {
+	if (levelclearhack) return true;
 	for (int i = 0; i < MAX_ENEMY; i++) {
 		if (Enemy[i].Live != 0) return false;
 		else continue;
 	}
+	for(int i=0; i<MAXEBULLET; i++) {
+		if (EBullet[i].isUsed != false) return false;
+		else continue;
+	}
+
 	return true;
 }
 
@@ -67,7 +78,22 @@ void CtrlEnemy() {
 	for (int i = 0; i < MAX_ENEMY; i++) {
 		if (Enemy[i].Live == 0) continue;
 		else {
-			Enemy[i].y += ENEMYSPEED;
+			//Enemy[i].y += ENEMYSPEED;
+			if (Enemy[i].x < WIN_X_SIZE / 2) {
+				if(aorb) {
+					Enemy[i].x -= (int)((WIN_X_SIZE / 2) - Enemy[i].x) / 20;
+
+				}else {
+					Enemy[i].x += (int)((WIN_X_SIZE / 2) - Enemy[i].x) / 20;
+				}
+			}
+			else if (Enemy[i].x > WIN_X_SIZE / 2) {
+				if(aorb) Enemy[i].x += (int)((Enemy[i].x) - (WIN_X_SIZE/2))/20;
+				else Enemy[i].x -= (int)((Enemy[i].x) - (WIN_X_SIZE / 2)) / 20;
+				
+			}
+			
+			
 			if (Enemy[i].y > WIN_Y_SIZE - 100)
 			{
 				Enemy[i].Live = 0;
@@ -76,6 +102,13 @@ void CtrlEnemy() {
 			}
 		}
 	}
+	counter++;
+	if (counter > 8) {
+		counter = 0;
+		aorb = !aorb;
+	}
+	
+	
 }
 
 void EnemyFire(int index)
@@ -110,11 +143,11 @@ void CtrlEBullet()
 	
 }
 
-bool Percentage()
+bool Percentage(int percent)
 {
 	int dlgowhagowntpasjanrnlcksgdma = rand() % 100;
 	std::cout << std::endl << dlgowhagowntpasjanrnlcksgdma << std::endl;
-	if (dlgowhagowntpasjanrnlcksgdma < PERCOFENEMYFIRE)
+	if (dlgowhagowntpasjanrnlcksgdma < percent)
 		return TRUE;
 	return FALSE;
 }

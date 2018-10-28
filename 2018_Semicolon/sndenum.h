@@ -9,5 +9,6 @@ enum {
 	S_START,
 	S_GAMEOVER,
 	S_EN_BULLET,
+	S_EN_DIVE,
 
 };

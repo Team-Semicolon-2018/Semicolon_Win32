@@ -23,6 +23,7 @@ void SoundInit(void) {
 	FMOD_System_CreateSound(g_System, "..\\res\\enemyhit2.wav", FMOD_DEFAULT, nullptr, &g_Sound[S_ENEMYDIE2]);
 	FMOD_System_CreateSound(g_System, "..\\res\\enemyhit3.wav", FMOD_DEFAULT, nullptr, &g_Sound[S_ENEMYHIT3]);
 	FMOD_System_CreateSound(g_System, "..\\res\\enemy3die.wav", FMOD_DEFAULT, nullptr, &g_Sound[S_ENEMYDIE3]);
+	FMOD_System_CreateSound(g_System, "..\\res\\galaga_dive.wav", FMOD_DEFAULT, nullptr, &g_Sound[S_EN_DIVE]);
 
 	//FMOD_System_CreateSound(g_System, "..\\sound\\NewPlayerInit.wav", FMOD_DEFAULT, 0, &g_Sound[S_START]);
 	//FMOD_System_CreateSound(g_System, ".\\sound\\enemybullet.wav", FMOD_DEFAULT, 0, &g_Sound[S_EN_BULLET]);
@@ -40,8 +41,11 @@ void VolumeSetSound(void) {
 
 
 void SoundUpdate(void) {
-	if (IsPlaying == 1)
+	if (IsPlaying == 1) {
 		FMOD_System_Update(g_System);
+	}
+		
+		
 }
 
 /*

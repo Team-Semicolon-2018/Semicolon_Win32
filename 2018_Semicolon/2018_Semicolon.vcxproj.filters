@@ -114,6 +114,9 @@
     <Image Include="..\res\enemy3-1.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="..\res\enemybitmap.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="..\res\_galaga_end_theme.wav">
@@ -149,5 +152,61 @@
     <Media Include="..\res\start.wav">
       <Filter>리소스 파일</Filter>
     </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\res\font1.bin">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\res\cursors\3dgarro.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\res\cursors\3dgmove.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\res\cursors\3dgnesw.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\res\cursors\3dgno.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\res\cursors\3dgns.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\res\cursors\3dgnwse.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\res\cursors\3dgwe.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\res\cursors\3dsmove.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\res\cursors\3dsns.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\res\cursors\3dsnwse.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\res\cursors\3dwarro.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\res\cursors\3dwmove.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\res\cursors\3dwnesw.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\res\cursors\3dwno.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\res\cursors\3dwns.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\res\cursors\3dwnwse.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\res\cursors\3dwwe.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
   </ItemGroup>
 </Project>

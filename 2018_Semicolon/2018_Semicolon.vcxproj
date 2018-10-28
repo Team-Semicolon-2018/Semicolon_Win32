@@ -72,12 +72,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>.\lib;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>.\lib;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -186,6 +188,7 @@
     <Image Include="..\res\enemy2.bmp" />
     <Image Include="..\res\enemy3-1.bmp" />
     <Image Include="..\res\enemy3.bmp" />
+    <Image Include="..\res\enemybitmap.bmp" />
     <Image Include="..\res\player.bmp" />
     <Image Include="2018_Semicolon.ico" />
     <Image Include="small.ico" />
@@ -202,6 +205,26 @@
     <Media Include="..\res\starfox_vs_menu_move.wav" />
     <Media Include="..\res\start.wav" />
     <Media Include="..\res\_galaga_end_theme.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\res\cursors\3dgarro.cur" />
+    <None Include="..\res\cursors\3dgmove.cur" />
+    <None Include="..\res\cursors\3dgnesw.cur" />
+    <None Include="..\res\cursors\3dgno.cur" />
+    <None Include="..\res\cursors\3dgns.cur" />
+    <None Include="..\res\cursors\3dgnwse.cur" />
+    <None Include="..\res\cursors\3dgwe.cur" />
+    <None Include="..\res\cursors\3dsmove.cur" />
+    <None Include="..\res\cursors\3dsns.cur" />
+    <None Include="..\res\cursors\3dsnwse.cur" />
+    <None Include="..\res\cursors\3dwarro.cur" />
+    <None Include="..\res\cursors\3dwmove.cur" />
+    <None Include="..\res\cursors\3dwnesw.cur" />
+    <None Include="..\res\cursors\3dwno.cur" />
+    <None Include="..\res\cursors\3dwns.cur" />
+    <None Include="..\res\cursors\3dwnwse.cur" />
+    <None Include="..\res\cursors\3dwwe.cur" />
+    <None Include="..\res\font1.bin" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

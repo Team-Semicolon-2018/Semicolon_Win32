@@ -24,6 +24,7 @@ void CALLBACK Control(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime)
 
 	if ((GetAsyncKeyState(32) & 0x8000) && canFire)
 		PlayerFired();
+		
 	if (int(Player.x + speed) < WIN_X_SIZE - 100 && int(Player.x + speed) > 50) {
 		Player.x += (int)speed;
 		
@@ -40,7 +41,31 @@ void CALLBACK Control(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime)
 	chkEnemyFuckedThePlayer();
 	score++;
 	if(chkLevelClear()) {
-		MessageBox(g_hWnd, LPCWSTR(L"레벨 클리어"), LPCWSTR(L"ㅇㅇ"), MB_ICONINFORMATION | MB_OK);
+
+		HWND hBtn = GetDlgItem(hWnd, BTN_PAUSE); // 1. 버튼의 핸들을 구함
+		EnableWindow(hBtn, FALSE); // 2. 핸들에 활성화(TRUE)/비활성화(FALSE) 값을 줌
+		ShowWindow(hBtn, SW_HIDE);
+		HWND hBtn2 = GetDlgItem(hWnd, BTN_RESUME); // 1. 버튼의 핸들을 구함
+		EnableWindow(hBtn2, FALSE); // 2. 핸들에 활성화(TRUE)/비활성화(FALSE) 값을 줌
+		ShowWindow(hBtn2, SW_HIDE);
+		std::cout << "Level Clear!";
+		KillTimer(hWnd, TM_CTRL);
+		KillTimer(hWnd, TM_NEWFRM);
+		KillTimer(hWnd, TM_ENEMYCTRL);
+		KillTimer(hWnd, TM_ENMFIRE);
+
+		TerminateThread(hThread_BG, 5);
+
+		HFONT hFont = CreateFont(40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, TEXT("Press Start 2P"));
+		HDC hMemDC = GetDC(hWnd);
+
+		SetTextColor(hMemDC, RGB(255, 0, 0));
+		SetBkColor(hMemDC, RGB(0, 0, 0));
+		SelectObject(hMemDC, hFont);
+		std::wstring str_level = (std::wstring)L"LEVEL CLEAR!";
+		TextOut(hMemDC, WIN_X_SIZE / 2 - 150, WIN_Y_SIZE / 2 - 50, str_level.c_str(), str_level.length());
+
+		//MessageBox(g_hWnd, LPCWSTR(L"레벨 클리어"), LPCWSTR(L"ㅇㅇ"), MB_ICONINFORMATION | MB_OK);
 	}
 }
 
@@ -65,8 +90,20 @@ void DrawScreen()
 	HBITMAP EnemyBitmap1_1 = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP12));
 
 
-	HBITMAP EBulletBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP1));
+	HBITMAP EBulletBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP13));
 
+
+	for (int i = 0; i < MAXBULLET; i++)	//불릿을 먼저 그린다
+	{
+		if (PBullet[i].isUsed)
+		{
+			SelectObject(hMemDC, HBITMAP(BulletBitmap));	//비트맵 연결
+			BitBlt(drawDC, PBullet[i].x, PBullet[i].y, PBullet[i].x + 40, PBullet[i].y + 40, hMemDC, 0, 0, SRCCOPY);
+		}
+		else {
+			continue;
+		}
+	}
 	for (int i = 0; i < MAXEBULLET; i++)
 	{
 		if (EBullet[i].isUsed == 0)
@@ -144,16 +181,7 @@ void DrawScreen()
 		}
 	}
 	
-	for (int i = 0; i < MAXBULLET; i++)	//불릿을 먼저 그린다
-	{
-		if (PBullet[i].isUsed)
-		{
-			SelectObject(hMemDC, HBITMAP(BulletBitmap));	//비트맵 연결
-			BitBlt(drawDC, PBullet[i].x, PBullet[i].y, PBullet[i].x + 40, PBullet[i].y + 40, hMemDC, 0, 0, SRCCOPY);
-		}else {
-			continue;
-		}
-	}
+	
 	
 	SelectObject(hMemDC, HBITMAP(PlayerBitmap));
 	BitBlt(drawDC, int(Player.x), Player.y, int(Player.x) + 40, Player.y + 40, hMemDC, 0, 0, SRCCOPY);
@@ -200,6 +228,7 @@ void MoveDown(void)
 void PlayerFired(void)
 {
 	canFire = 0;
+	Sound_Play(S_PL_BULLET);
 	for (int i = 0; i < MAXBULLET; i++)
 	{
 		if (PBullet[i].isUsed == 0)
