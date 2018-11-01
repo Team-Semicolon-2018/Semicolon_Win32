@@ -5,7 +5,7 @@
 
 
 FMOD_SYSTEM *g_System; //FMOD system 변수선언
-FMOD_SOUND *g_Sound[10];
+FMOD_SOUND *g_Sound[32];
 FMOD_CHANNEL *channel = nullptr;
 FMOD_BOOL IsPlaying;
 
@@ -14,7 +14,7 @@ float volume = 1; //볼륨 0~1
 
 void SoundInit(void) {
 	FMOD_System_Create(&g_System);
-	FMOD_System_Init(g_System, 10, FMOD_INIT_NORMAL, nullptr); //최대 10개의 소리재생가능 
+	FMOD_System_Init(g_System, 32, FMOD_INIT_NORMAL, nullptr); //최대 10개의 소리재생가능 
 
 															   /*사운드 생성*/
 	FMOD_System_CreateSound(g_System, "..\\res\\bgm.wav", FMOD_LOOP_NORMAL, nullptr, &g_Sound[S_BGM]);
@@ -24,9 +24,16 @@ void SoundInit(void) {
 	FMOD_System_CreateSound(g_System, "..\\res\\enemyhit3.wav", FMOD_DEFAULT, nullptr, &g_Sound[S_ENEMYHIT3]);
 	FMOD_System_CreateSound(g_System, "..\\res\\enemy3die.wav", FMOD_DEFAULT, nullptr, &g_Sound[S_ENEMYDIE3]);
 	FMOD_System_CreateSound(g_System, "..\\res\\galaga_dive.wav", FMOD_DEFAULT, nullptr, &g_Sound[S_EN_DIVE]);
+	FMOD_System_CreateSound(g_System, "..\\res\\start.wav", FMOD_DEFAULT, nullptr, &g_Sound[S_START]);
+	FMOD_System_CreateSound(g_System, "..\\res\\level.wav", FMOD_DEFAULT, nullptr, &g_Sound[S_LEVEL]);
+	FMOD_System_CreateSound(g_System, "..\\res\\explosion.wav", FMOD_DEFAULT, nullptr, &g_Sound[S_EXPLODE]);
+	FMOD_System_CreateSound(g_System, "..\\res\\perfect.mp3", FMOD_DEFAULT, nullptr, &g_Sound[S_CLEAR]);
+	FMOD_System_CreateSound(g_System, "..\\res\\live--.mp3", FMOD_DEFAULT, nullptr, &g_Sound[S_LIVEMM]);
+	FMOD_System_CreateSound(g_System, "..\\res\\nameentry.mp3", FMOD_DEFAULT, nullptr, &g_Sound[S_NAMEENTRY]);
+	FMOD_System_CreateSound(g_System, "..\\res\\gover.mp3", FMOD_DEFAULT, nullptr, &g_Sound[S_GAMEOVER]);
 
-	//FMOD_System_CreateSound(g_System, "..\\sound\\NewPlayerInit.wav", FMOD_DEFAULT, 0, &g_Sound[S_START]);
 	//FMOD_System_CreateSound(g_System, ".\\sound\\enemybullet.wav", FMOD_DEFAULT, 0, &g_Sound[S_EN_BULLET]);
+	//
 }
 
 

@@ -10,5 +10,11 @@ enum {
 	S_GAMEOVER,
 	S_EN_BULLET,
 	S_EN_DIVE,
+	S_EXPLODE,
+	S_LEVEL,
+	S_CLEAR,
+	S_LIVEMM,
+	S_NAMEENTRY,
+
 
 };

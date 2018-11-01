@@ -47,7 +47,11 @@ void chkEnemyFuckedThePlayer() {
 	for (int i = 0; i < MAX_ENEMY; i++) {
 		if (Enemy[i].Live != 0) {
 			if (Enemy[i].x >= Player.x - 30 && Enemy[i].x <= Player.x + 30 && Enemy[i].y >= Player.y - 10 && Enemy[i].y <= Player.y + 10) {
-				if (Player.Live > 0) Player.Live--;
+				if (Player.Live > 0) {
+					Player.Live--;
+					Sound_Play(S_LIVEMM);
+
+				}
 				Enemy[i].Live = 0;
 				
 			}
@@ -97,8 +101,11 @@ void CtrlEnemy() {
 			if (Enemy[i].y > WIN_Y_SIZE - 100)
 			{
 				Enemy[i].Live = 0;
-				if (Player.Live > 0)
+				if (Player.Live > 0) {
 					Player.Live--;
+				
+					Sound_Play(S_LIVEMM);
+				}
 			}
 		}
 	}
@@ -111,7 +118,7 @@ void CtrlEnemy() {
 	
 }
 
-void EnemyFire(int index)
+void EnemyFire(int index)	//에너미 너는 오늘 해고야
 {
 	for (int i = 0; i < MAXEBULLET; i++)
 		if (EBullet[i].isUsed == 0)
@@ -119,6 +126,7 @@ void EnemyFire(int index)
 			EBullet[i].isUsed = 1;
 			EBullet[i].x = (int)Enemy[index].x;
 			EBullet[i].y = (int)Enemy[index].y;
+			Sound_Play(S_PL_BULLET);
 			break;
 		}
 }
@@ -156,7 +164,10 @@ void chkPlayerHit(int i)
 {
 
 	if (EBullet[i].x >= Player.x - 30 && EBullet[i].x <= Player.x + 30 && EBullet[i].y >= Player.y - 10 && EBullet[i].y <= Player.y + 10) {
-		if (Player.Live > 0) Player.Live--;
+		if (Player.Live > 0) {
+			Sound_Play(S_LIVEMM);
+			Player.Live--;
+		}
 		EBullet[i].isUsed = 0;
 //		마마, 황송하옵니다
 		//-- == 마마

@@ -117,6 +117,24 @@
     <Image Include="..\res\enemybitmap.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="..\res\explode1.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\res\explode2.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\res\explode3.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\res\explode4.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\res\bitmap18.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\res\semicolon_logo.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="..\res\_galaga_end_theme.wav">

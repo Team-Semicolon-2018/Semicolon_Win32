@@ -178,6 +178,7 @@
     <ResourceCompile Include="2018_Semicolon.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\res\bitmap18.bmp" />
     <Image Include="..\res\bullet.bmp" />
     <Image Include="..\res\enemy.bmp" />
     <Image Include="..\res\enemy1-1.bmp" />
@@ -189,7 +190,12 @@
     <Image Include="..\res\enemy3-1.bmp" />
     <Image Include="..\res\enemy3.bmp" />
     <Image Include="..\res\enemybitmap.bmp" />
+    <Image Include="..\res\explode1.bmp" />
+    <Image Include="..\res\explode2.bmp" />
+    <Image Include="..\res\explode3.bmp" />
+    <Image Include="..\res\explode4.bmp" />
     <Image Include="..\res\player.bmp" />
+    <Image Include="..\res\semicolon_logo.bmp" />
     <Image Include="2018_Semicolon.ico" />
     <Image Include="small.ico" />
   </ItemGroup>
